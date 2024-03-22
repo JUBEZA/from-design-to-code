@@ -11,7 +11,12 @@ export default class extends Controller {
   }
 
   update() {
-    console.log("TODO: send request in AJAX")
+    const url = `${this.formTarget.action}?query=${this.inputTarget.value}`
+    fetch(url, {headers: {"Accept": "text/plain"}})
+      .then(response => response.text())
+      .then((data) => {
+        this.listTarget.outerHTML = data
+      })
   }
 
 }
