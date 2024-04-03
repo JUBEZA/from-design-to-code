@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["infos", "form"]
+  static targets = ["infos", "form", "card"]
 
   displayForm() {
     this.infosTarget.classList.add("d-none")
@@ -19,6 +19,9 @@ export default class extends Controller {
       .then(response => response.text())
       .then((data) => {
         console.log(data)
+      })
+      .then((data) => {
+        this.cardTarget.outerHTML = data
       })
   }
 }
